@@ -1,0 +1,33 @@
+{
+  "name": "premise-check",
+  "version": "0.2.0",
+  "description": "A Haiku side agent watches the session for claims about libraries, frameworks and versions made from stale training data, and gets them checked.",
+  "types": "./types/index.d.ts",
+  "userConfig": {
+    "action": {
+      "type": "string",
+      "title": "When the watcher flags a claim",
+      "description": "nudge: tell the main agent to verify it. verify: an independent checker subagent looks it up and tells the main agent only if it was wrong. ask: show it above the prompt and let you choose. off: watch nothing.",
+      "options": ["nudge", "verify", "ask", "off"],
+      "default": "nudge"
+    },
+    "watcherModel": {
+      "type": "string",
+      "title": "Watcher model",
+      "description": "Model that reads the session and spots stale-knowledge claims.",
+      "default": "haiku"
+    },
+    "checkerModel": {
+      "type": "string",
+      "title": "Checker model",
+      "description": "Model the verifying subagent (with web access) runs on.",
+      "default": "haiku"
+    },
+    "everySteps": {
+      "type": "number",
+      "title": "Watch every N model steps",
+      "description": "During a long turn, how many model requests pass between checks. Every turn's end is always checked.",
+      "default": 6
+    }
+  }
+}
