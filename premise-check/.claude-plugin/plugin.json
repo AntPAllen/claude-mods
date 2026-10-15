@@ -1,0 +1,20 @@
+{
+  "name": "premise-check",
+  "version": "0.1.0",
+  "description": "Catches claims about libraries, frameworks and versions made from stale training data, and makes them get checked against current sources.",
+  "userConfig": {
+    "mode": {
+      "type": "string",
+      "title": "Mode",
+      "description": "nudge: make the agent re-check before it finishes. verify: an independent subagent checks and reports back. escalate: nudge first, verify if the agent ignores the nudge. off: only the system-prompt reminder.",
+      "options": ["escalate", "nudge", "verify", "off"],
+      "default": "escalate"
+    },
+    "checkerModel": {
+      "type": "string",
+      "title": "Checker model",
+      "description": "Model alias or id the verifying subagent runs on.",
+      "default": "sonnet"
+    }
+  }
+}
